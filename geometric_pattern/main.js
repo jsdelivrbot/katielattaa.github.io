@@ -6,7 +6,7 @@ var gVal;
 var bVal;
 
 function setup() {
-    createCanvas(480,600);
+    createCanvas(2000,2000);
     CIRCLE_DIA = width/NUM_CIRCLES;
     CIRCLE_RAD = CIRCLE_DIA/2
 }
