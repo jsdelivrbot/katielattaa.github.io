@@ -8,20 +8,33 @@ var JUMP = -5;
 var obstacleSprites;
 var isGameOver;
 var score;
+var playerImage
+var obstacleImage
+var backgroundImage
+var groundImage
+
+function preload() {
+    playerImage = loadImage("flippy.png")
+    obstacleImage = loadImage("gag.png")
+    backgroundImage= loadImage("toontown.jpg")
+    groundImage= loadImage("ground.png")
+}
 
 function setup () {
     isGameOver = false;
     score = 0;
     createCanvas(400, 300);
-    background(150, 200, 250);
+    background(backgroundImage);
     groundSprites = new Group();
     
     numGroundSprites = width/GROUND_SPRITE_WIDTH + 1;
     for (var n = 0; n < numGroundSprites; n++) {
         var groundSprite = createSprite(n*50, height-25, GROUND_SPRITE_WIDTH, GROUND_SPRITE_HEIGHT) ;
+        groundSprite.addImage(groundImage);
         groundSprites.add(groundSprite) ;
     }
     player = createSprite(100, height-75, 50, 50);
+    player.addImage(playerImage);
     obstacleSprites = new Group();
 }
 
@@ -33,7 +46,7 @@ function draw () {
         text("Your score was: " + score, camera.position.x, camera.position.y - 20);
         text("GAME OVER!!!! Click anywere to restart", camera.position.x, camera.position.y);
     } else {
-        background(150, 200, 250);
+        background(backgroundImage);
         if (keyDown(UP_ARROW)) {
             player.velocity.y = JUMP;
         }
@@ -53,7 +66,9 @@ function draw () {
         }
         if (random() > 0.95) {
             var obstacle = createSprite(camera.position.x + width, random(0, (height-50) -15), 30, 30);
+            obstacle.addImage(obstacleImage);
             obstacleSprites.add(obstacle);
+            
         }
         var firstObstacle = obstacleSprites[0];
         if (obstacleSprites.length > 0 && firstObstacle.position.x <= camera.position.x - (width/2 + firstObstacle.width/2)) {
@@ -76,6 +91,7 @@ function mouseClicked() {
         groundSprites.removeSprites();
         for (var n = 0; n < numGroundSprites; n++) {
         var groundSprite = createSprite(n*50, height-25, GROUND_SPRITE_WIDTH, GROUND_SPRITE_HEIGHT);
+        groundSprite.addImage(groundImage);
         groundSprites.add(groundSprite);
         }
         
