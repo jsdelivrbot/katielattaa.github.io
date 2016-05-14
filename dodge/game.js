@@ -52,7 +52,7 @@ function gameOver() {
     background(0) ;
     textAlign(CENTER) ;
     fill("white") ;
-    var t = "GAME OVER! click anywhere to redeem your pathetic self"
+    var t = "GAME OVER! click anywhere to redeem youurself"
     text(t, 40, 100, 140 ,160)
 }
 function mouseClicked() {
