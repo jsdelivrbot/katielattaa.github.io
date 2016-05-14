@@ -47,7 +47,7 @@ function draw () {
         text("GAME OVER!!!! Click anywere to restart", camera.position.x, camera.position.y);
     } else {
         background(backgroundImage);
-        if (keyDown(UP_ARROW)) {
+        if (touchIsDown) {
             player.velocity.y = JUMP;
         }
         player.velocity.y = player.velocity.y + GRAVITY;
@@ -86,7 +86,7 @@ function endGame() {
     isGameOver = true
     console.log("Game Over!");
 }
-function mouseClicked() {
+function touchMoved() {
     if (isGameOver) {
         groundSprites.removeSprites();
         for (var n = 0; n < numGroundSprites; n++) {
