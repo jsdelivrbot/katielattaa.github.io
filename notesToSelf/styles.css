@@ -1,0 +1,9 @@
+.new-note * {
+    display: block;
+}
+.note-title {
+  font-weight: bold;
+}
+.note-date {
+  font-style: italic;
+}
